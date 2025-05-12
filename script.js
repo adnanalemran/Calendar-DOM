@@ -66,6 +66,14 @@ class Calender {
       });
       this.calendarGrid.appendChild(day);
     }
+    const remainingDays = 42 - (firstDayIndex + totalDays);
+    for (let i = 1; i <= remainingDays; i++) {
+      const day = document.createElement("div");
+      day.classList.add("day", "next-month");
+      day.innerText = i;
+      this.calendarGrid.appendChild(day);
+    }
+    this.updateSelectedDateDisplay();
   }
 }
 
