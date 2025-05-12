@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar-DOM || Adnan</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
-  <body class="bg-gray-100 text-gray-800 font-sans">
-    <div class="calender-container max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <!-- Header -->
-      <div class="calender-header flex justify-between items-center mb-6">
-        <div class="header-left flex items-center gap-4">
-          <button id="prevMonth" class="calender-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Prev
-          </button>
-          <div class="date-selectors flex items-center gap-2">
-            <div id="monthSelect" class="date-select text-lg font-semibold"></div>
-            <div id="yearSelect" class="date-select text-lg font-semibold"></div>
-          </div>
-          <button id="nextMonth" class="calender-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Next
-          </button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <div class="header-left">
+                <button id="prevMonth" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="date-selectors">
+                    <select id="monthSelect" class="date-select"></select>
+                    <select id="yearSelect" class="date-select"></select>
+                </div>
+                <button id="nextMonth" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <button id="todayBtn" class="today-btn">Today</button>
         </div>
-        <div class="today-btn" id="todayBtn">
-          <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Today
-          </button>
+        <div class="calendar-weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
         </div>
-      </div>
-
-      <!-- Weekdays -->
-      <div class="calender-weekend grid grid-cols-7 text-center font-medium text-gray-600 mb-4">
-        <div>Sun</div>
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
-      </div>
-
-      <!-- Calendar Grid -->
-      <div id="calender" class="calender-grid grid grid-cols-7 gap-2">
-        <!-- Calendar days will be dynamically generated -->
-      </div>
-
-      <!-- Selected Date Info -->
-      <div class="select-date-info mt-6 text-center">
-        <div id="selectDateDisplay" class="text-lg font-semibold text-gray-700"></div>
-      </div>
+        <div id="calendar" class="calendar-grid"></div>
+        <div class="selected-date-info">
+            <div id="selectedDateDisplay"></div>
+        </div>
     </div>
     <script src="script.js"></script>
-  </body>
-</html>
+</body>
+</html> 
