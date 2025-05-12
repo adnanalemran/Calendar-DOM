@@ -35,47 +35,38 @@ class Calender {
     this.renderCalendar();
     console.log(this.renderCalendar());
   }
-renderCalendar() {
-  this.monthSelect.textContent = this.monthNames[this.currentMonth];
-  this.yearSelect.textContent = this.currentYear;
-  this.calendarGrid.innerHTML = "";
+  renderCalendar() {
+    this.monthSelect.valu = this.currentMonth;
+    this.yearSelect.value = this.currentYear;
+    this.calendarGrid.innerHTML = "";
+    const fristDay = new Date(this.currentYear, this.currentMonth, 1);
+    const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+    const totalDays = lastDay.getDate();
+    const firstDayIndex = fristDay.getDay();
 
-  const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay(); // day index (0=Sun)
-  const totalDays = new Date(this.currentYear, this.currentMonth + 1, 0).getDate(); // days in month
+    const prevMonthDays = new Date(
+      this.currentYear,
+      this.currentMonth,
+      0
+    ).getDate();
 
-  // Add empty divs for padding
-  for (let i = 0; i < firstDay; i++) {
-    const emptyCell = document.createElement("div");
-    this.calendarGrid.appendChild(emptyCell);
-  }
-
-  // Add day cells
-  for (let day = 1; day <= totalDays; day++) {
-    const dayCell = document.createElement("div");
-    dayCell.textContent = day;
-    dayCell.className =
-      "text-center py-2 rounded cursor-pointer hover:bg-blue-100 bg-gray-50";
-    
-    // Mark today
-    if (
-      day === this.currentDay &&
-      this.currentMonth === new Date().getMonth() &&
-      this.currentYear === new Date().getFullYear()
-    ) {
-      dayCell.classList.add("bg-blue-500", "text-white", "font-bold");
+    for (let i = 0; i < firstDayIndex; i++) {
+      const day = document.createElement("div");
+      day.classList.add("day", "prev-month");
+      day.innerText = prevMonthDays - firstDayIndex + i + 1;
+      this.calendarGrid.appendChild(day);
     }
-
-    // On click, show selected date
-    dayCell.addEventListener("click", () => {
-      this.selectedDate = new Date(this.currentYear, this.currentMonth, day);
-      this.selectedDateDisplay.textContent = `Selected Date: ${this.selectedDate.toDateString()}`;
-    });
-
-    this.calendarGrid.appendChild(dayCell);
+    for (let i = 1; i <= totalDays; i++) {
+      const day = document.createElement("div");
+      day.classList.add("day");
+      day.innerText = i;
+      day.addEventListener("click", () => {
+        this.selectedDate = new Date(this.currentYear, this.currentMonth, i);
+        this.selectedDateDisplay.innerText = `Selected Date: ${this.selectedDate.toLocaleDateString()}`;
+      });
+      this.calendarGrid.appendChild(day);
+    }
   }
-}
-
-
 }
 
 document.addEventListener("DOMContentLoaded", function () {
