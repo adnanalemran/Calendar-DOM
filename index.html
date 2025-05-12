@@ -7,7 +7,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <div class="">
+    <div class="calender-container">
+        <div class="calender-header">
+            <div class="header-left">
+                <button id="prevMonth" class="calender-btn">Prev</button>
+                <div class="date-selectors">
+                    <div id="monthSelect" class="date-select"></div>
+                    <div id="yearSelect" class="date-select"></div>
+                </div>
+                <button id="nextMonth" class="calender-btn">Next</button>
+
+            </div>
+            <div class="today-btn" id="todayBtn"></div>
+        </div>
+
       <div class="calender-weekend">
         <div>Sun</div>
         <div>Mon</div>
