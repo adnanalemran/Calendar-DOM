@@ -40,7 +40,7 @@ class Calendar {
 
     setupYearSelect() {
         const currentYear = this.date.getFullYear();
-        const yearRange = 10; // Show 10 years before and after current year
+        const yearRange = 100; // Show 100 years before and after current year
         
         for (let year = currentYear - yearRange; year <= currentYear + yearRange; year++) {
             const option = document.createElement('option');
